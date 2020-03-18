@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" 
+    type="image/png" 
+    href="123.png">
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        align-items: center;
+        text-align: center;
+        
+    }
+    body{
+        background:url(1.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: rgb(229, 255, 82);
+        background-color: rgb(29, 54, 100);
+    }
+    .maiin{
+        width: 90%;
+        height: 70%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        display: block;
+        background: transparent;
+        text-align: center;
+        align-items: center;
+        padding:50px;
+        opacity: 0.9;
+        box-shadow: 0px 10px 10px rgb(0, 0, 0);
+        border: 1px solid black;
+    }#btn{
+        padding: 15px;
+        border-radius: 5px;
+        background-color: greenyellow;
+        box-shadow: 0px 5px 5px 5px black;
+        outline: none;
+    }
+#mywords{
+    display: block;
+    width: 80%;
+    background-color: rgb(0, 0, 0);
+    color: whitesmoke;
+    font-size: 20px;
+    margin: auto;
+    resize: none;
+    outline: none;border: 4px solid blueviolet;
+    text-align: left;
+    box-shadow: 0px 15px 15px 5px black; 
+}
+#mywords:focus{
+    border: 5px solid greenyellow;
+}
+</style>
+<body>
+    <div id="particles-js">
+    <div class="maiin">
+        <h1>WELCOME TO TYING TEST</h1>
+        <h3>CHECK YOUR SPEED</h3>
+        <h2 id="msg"> </h2>
+
+            <br>
+            <textarea name="" id="mywords" cols="30" rows="10" placeholder="start typing here ....." disabled></textarea>
+    
+        <br>
+        <button id="btn" >Start</button>
+    </div>
+</div>
+
+    <script>
+        const setofwords = [
+            "Hello friend welcome to typing speed.",
+            "Lets find out how fast you type."
+        ];
+        const msg = document.getElementById('msg');
+        const mywords = document.getElementById('mywords');
+        const btn = document.getElementById('btn');
+        let starttime , endtime;
+        function playgame()
+        {
+            let randomnumber = Math.floor(Math.random()*setofwords.length);
+            msg.innerText = setofwords[randomnumber];
+            let date = new Date();
+            starttime = date.getTime();
+            btn.innerText = "Done";
+
+        }
+        function endplay()
+        {
+            let date = new Date();
+            endtime = date.getTime();
+            let totaltime = ((endtime - starttime)/ 1000);
+            console.log(totaltime);
+            let totalstr = mywords.value;
+            let wordcount = countt(totalstr);
+            let speed = Math.round((wordcount / totaltime) * 60);
+            console.log(speed);
+            msg.innerText = "YOUR TYPING SPEED IS "+speed+" per SECOND";
+
+        }
+        function countt(str)
+        {
+            let response = str.split(" ").length;
+            console.log(response);
+            return response;
+        }
+
+        btn.addEventListener('click', function()
+        {
+            if(this.innerText == 'Start')
+            {
+
+                mywords.disabled = false;
+                playgame();
+            }else if(this.innerText == 'Done'){
+                mywords.disabled = true;
+                btn.innerText = "Start";
+                endplay();   
+            }
+        })
+
+            </script>
+            
+    <script type="text/javascript" src="particles.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
