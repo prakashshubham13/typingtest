@@ -66,7 +66,8 @@
     <div id="particles-js">
     <div class="maiin">
         <h1>WELCOME TO TYING TEST</h1>
-        <h3>CHECK YOUR SPEED</h3>
+        <h3>CHECK YOUR SPEED BY TYPING THE FOLLOWING:</h3>
+        <hr>
         <h2 id="msg"> </h2>
 
             <br>
@@ -105,7 +106,7 @@
             let wordcount = countt(totalstr);
             let speed = Math.round((wordcount / totaltime) * 60);
             console.log(speed);
-            msg.innerText = "YOUR TYPING SPEED IS "+speed+" per SECOND";
+            msg.innerText = "YOUR TYPING SPEED IS "+speed+" WORDS per MINUTE";
 
         }
         function countt(str)
